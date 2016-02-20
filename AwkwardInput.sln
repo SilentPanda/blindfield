@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{F2E70F04-F981-AC99-DD6A-F1FEFF12C744}") = "AwkwardInput", "Assembly-CSharp.csproj", "{C5FDCEF7-BAB7-E37A-A657-EF33078530C6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5FDCEF7-BAB7-E37A-A657-EF33078530C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5FDCEF7-BAB7-E37A-A657-EF33078530C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5FDCEF7-BAB7-E37A-A657-EF33078530C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5FDCEF7-BAB7-E37A-A657-EF33078530C6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
