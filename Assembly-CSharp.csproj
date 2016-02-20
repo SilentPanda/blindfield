@@ -246,6 +246,7 @@
      <Compile Include="Assets\InControl\Test\TestInputManager.cs" />
      <Compile Include="Assets\RuleSets\BaseRuleSet.cs" />
      <Compile Include="Assets\RuleSets\CirclesOverTargetsRuleSet.cs" />
+     <Compile Include="Assets\RuleSets\OverlappingCirclesRuleSet.cs" />
      <Compile Include="Assets\RuleSets\RuleSetManager.cs" />
      <Compile Include="Assets\Scripts\ControllerInput.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
