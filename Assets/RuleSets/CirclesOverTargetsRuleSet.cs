@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OverlappingCircles : BaseRuleSet {
+public class CirclesOverTargetsRuleSet : BaseRuleSet {
     public int circleCount = 2;
     public int targetCount = 1;
 
     public float overlapThreshold = 100.0f;
 
+    // TODO: Pass these in as editor properties?
     private GameObject playerCirclePrefab;
     private GameObject targetPrefab;
 

@@ -245,7 +245,7 @@
      <Compile Include="Assets\InControl\Source\iCade\ICadeState.cs" />
      <Compile Include="Assets\InControl\Test\TestInputManager.cs" />
      <Compile Include="Assets\RuleSets\BaseRuleSet.cs" />
-     <Compile Include="Assets\RuleSets\OverlappingCircles.cs" />
+     <Compile Include="Assets\RuleSets\CirclesOverTargetsRuleSet.cs" />
      <Compile Include="Assets\RuleSets\RuleSetManager.cs" />
      <Compile Include="Assets\Scripts\ControllerInput.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
