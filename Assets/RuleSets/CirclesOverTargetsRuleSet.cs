@@ -59,9 +59,27 @@ public class CirclesOverTargetsRuleSet : BaseRuleSet {
 		var controller = ControllerInput.GetController ();
 		var movement = ControllerInput.TwoStickCombine (controller);
 		foreach (var circle in circles) {
-			circle.transform.position += movement;
+			circle.transform.position += movement * inputSpeed;
 		}
+		ClampCircles ();
     }
+
+	private void ClampCircles() {
+		var lowerLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
+		var upperRight = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+
+		Rect screen = new Rect(
+			lowerLeft.x, lowerLeft.y,
+			upperRight.x-lowerLeft.x, upperRight.y-lowerLeft.y
+		);
+
+		foreach (var circle in circles) {
+			circle.transform.position = new Vector3(
+				Mathf.Clamp(circle.transform.position.x, screen.x, screen.xMax),
+				Mathf.Clamp(circle.transform.position.y, screen.y, screen.yMax)
+			);
+		}
+	}
 
     private void CheckOverlap() {
         if (!enabled) {
