@@ -2,22 +2,24 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OverlappingCircles : MonoBehaviour {
-    public delegate void CompletedEventHandler();
-    public event CompletedEventHandler onCompleted;
-
+public class OverlappingCircles : BaseRuleSet {
     public int circleCount = 2;
     public int targetCount = 1;
 
     public float overlapThreshold = 100.0f;
 
+    private GameObject playerCirclePrefab;
+    private GameObject targetPrefab;
+
     private List<GameObject> circles = new List<GameObject>();
     private List<GameObject> targets = new List<GameObject>();
 
     void Awake() {
-        GameObject playerCirclePrefab = Resources.Load("PlayerCircle") as GameObject;
-        GameObject targetPrefab = Resources.Load("Target") as GameObject;
+        playerCirclePrefab = Resources.Load("PlayerCircle") as GameObject;
+        targetPrefab = Resources.Load("Target") as GameObject;
+    }
 
+    void OnEnable() {
         for (int i = 0; i < circleCount; i++) {
             GameObject circle = Instantiate(playerCirclePrefab);
 
@@ -35,11 +37,29 @@ public class OverlappingCircles : MonoBehaviour {
         }
     }
 
+    void OnDisable() {
+        foreach (GameObject circle in circles) {
+            Destroy(circle);
+        }
+
+        circles.Clear();
+
+        foreach (GameObject target in targets) {
+            Destroy(target);
+        }
+
+        targets.Clear();
+    }
+
     void Update() {
         CheckOverlap();
     }
 
     private void CheckOverlap() {
+        if (!enabled) {
+            return;
+        }
+
         if (circles.Count < 1) {
             return;
         }
@@ -69,8 +89,8 @@ public class OverlappingCircles : MonoBehaviour {
             }
         }
 
-        if (allCirclesOverlapTarget && onCompleted != null) {
-            onCompleted();
+        if (allCirclesOverlapTarget) {
+            OnCompleted();
         }
     }
 }

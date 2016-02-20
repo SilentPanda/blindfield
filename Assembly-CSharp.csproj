@@ -45,7 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\RuleSets\BaseRuleSet.cs" />
      <Compile Include="Assets\RuleSets\OverlappingCircles.cs" />
+     <Compile Include="Assets\RuleSets\RuleSetManager.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/opt/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
