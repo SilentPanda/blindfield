@@ -181,6 +181,7 @@ GameObject:
   - 4: {fileID: 1487364604}
   - 114: {fileID: 1487364605}
   - 114: {fileID: 1487364603}
+  - 114: {fileID: 1487364606}
   m_Layer: 0
   m_Name: RuleSetManager
   m_TagString: Untagged
@@ -225,3 +226,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9607499585fb4c798a89e52299e942e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1487364606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1487364602}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed122552e0cad4ec28d7d5cb31fd7982, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  circleCount: 2
+  overlapThreshold: 100
