@@ -32,7 +32,7 @@ public class ControllerInput {
 		Vector3 p2 = new Vector3(controller.RightStickX.Value, controller.RightStickY.Value);
 
 		float dist = (p1 - p2).magnitude;
-		if (dist > 0.25) {
+		if (dist > 0.85 && p1.magnitude > 0.9 && p2.magnitude > 0.9) {
 			controller.Vibrate ((p1-p2).magnitude);
 		} else {
 			controller.Vibrate (0.0f);

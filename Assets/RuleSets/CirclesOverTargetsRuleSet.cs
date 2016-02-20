@@ -62,6 +62,7 @@ public class CirclesOverTargetsRuleSet : BaseRuleSet {
 			circle.transform.position += movement * inputSpeed;
 		}
 		ClampCircles ();
+		ControllerInput.ShakeOnDifferentInput (controller);
     }
 
 	private void ClampCircles() {
