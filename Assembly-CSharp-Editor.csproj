@@ -76,6 +76,7 @@
      <Compile Include="Assets\InControl\Source\Touch\Editor\TouchSwipeControlEditor.cs" />
      <Compile Include="Assets\InControl\Source\Touch\Editor\TouchTrackControlEditor.cs" />
      <None Include="Assets\InControl\Readme\README.txt" />
+     <None Include="Assets\StreamingAssets\Songs\1.txt" />
  <Reference Include="UnityEditor.Advertisements">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/Editor/UnityEditor.Advertisements.dll</HintPath>
  </Reference>

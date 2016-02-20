@@ -248,9 +248,19 @@
      <Compile Include="Assets\RuleSets\CirclesOverTargetsRuleSet.cs" />
      <Compile Include="Assets\RuleSets\OverlappingCirclesRuleSet.cs" />
      <Compile Include="Assets\RuleSets\RuleSetManager.cs" />
+     <Compile Include="Assets\Scripts\Audio\Conductor.cs" />
+     <Compile Include="Assets\Scripts\Audio\Drums.cs" />
+     <Compile Include="Assets\Scripts\Audio\GlobalSoundVariables.cs" />
+     <Compile Include="Assets\Scripts\Audio\Melody.cs" />
+     <Compile Include="Assets\Scripts\Audio\MixerControls.cs" />
+     <Compile Include="Assets\Scripts\Audio\NoteConverter.cs" />
+     <Compile Include="Assets\Scripts\Audio\SineWave.cs" />
+     <Compile Include="Assets\Scripts\Audio\Synth.cs" />
+     <Compile Include="Assets\Scripts\Audio\WavePlayer.cs" />
      <Compile Include="Assets\Scripts\ControllerInput.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
      <None Include="Assets\InControl\Readme\README.txt" />
+     <None Include="Assets\StreamingAssets\Songs\1.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

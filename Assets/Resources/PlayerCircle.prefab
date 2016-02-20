@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 489598}
   - 212: {fileID: 21275770}
   m_Layer: 0
-  m_Name: Player Circle
+  m_Name: PlayerCircle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,7 +38,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8a03e6ae7597c472585b237f9a2c06bc, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
@@ -70,6 +70,10 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: de440d4bdc11641699a57a3bc63c117f,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8a03e6ae7597c472585b237f9a2c06bc, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 175604}
