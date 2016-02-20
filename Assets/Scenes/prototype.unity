@@ -719,6 +719,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1850829361}
   - 114: {fileID: 1850829360}
+  - 114: {fileID: 1850829362}
   m_Layer: 0
   m_Name: GameController
   m_TagString: GameController
@@ -752,6 +753,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &1850829362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1850829359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7b5e8de77c5b4597ae7fbfb49a95e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  logDebugInfo: 0
+  invertYAxis: 0
+  useFixedUpdate: 0
+  dontDestroyOnLoad: 0
+  enableXInput: 1
+  xInputUpdateRate: 0
+  xInputBufferSize: 0
+  enableICade: 0
+  customProfiles: []
 --- !u!1 &1863996183
 GameObject:
   m_ObjectHideFlags: 0
@@ -763,7 +784,6 @@ GameObject:
   - 33: {fileID: 1863996186}
   - 135: {fileID: 1863996185}
   - 23: {fileID: 1863996184}
-  - 114: {fileID: 1863996188}
   - 54: {fileID: 1863996189}
   m_Layer: 0
   m_Name: Sphere
@@ -829,18 +849,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
---- !u!114 &1863996188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1863996183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e702e6208f2299419b7a973dd3caa4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0.15
 --- !u!54 &1863996189
 Rigidbody:
   m_ObjectHideFlags: 0
