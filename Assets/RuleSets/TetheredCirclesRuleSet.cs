@@ -24,7 +24,6 @@ public class TetheredCirclesRuleSet : CirclesOverTargetsRuleSet {
 
 		TetherCircles ();
 
-
 		var renderer = tether.GetComponent<LineRenderer> ();
 		renderer.SetPosition (0, circles [0].transform.position);
 		renderer.SetPosition (1, circles [1].transform.position);
