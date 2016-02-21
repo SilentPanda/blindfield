@@ -39,6 +39,7 @@ AudioMixerGroupController:
   m_Pitch: db3069759bd7c594099872c3370afc35
   m_Effects:
   - {fileID: 24400002}
+  - {fileID: 24454142}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
@@ -59,7 +60,7 @@ AudioMixerGroupController:
   - {fileID: 24448324}
   - {fileID: 24428964}
   m_UserColorIndex: 0
-  m_Mute: 1
+  m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
 --- !u!243 &24367716
@@ -210,6 +211,27 @@ AudioMixerEffectController:
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
   m_Bypass: 0
+--- !u!244 &24454142
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: 
+  m_EffectID: 32fc91e4f12b65b40992d5491b771e16
+  m_EffectName: Compressor
+  m_MixLevel: 50037c08118b58a4faf4d1c596df68b4
+  m_Parameters:
+  - m_ParameterName: Threshold
+    m_GUID: 4f7189f75b9afcc4db968a179d484ee3
+  - m_ParameterName: Attack
+    m_GUID: 0bd8ae34d835f5647a7dfd6bc4e79a20
+  - m_ParameterName: Release
+    m_GUID: 5b5b7dd3e59728c43964827c59b128a2
+  - m_ParameterName: Make up gain
+    m_GUID: 84c5ca4c3e4d1b0458c47af6c0fa3cf2
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &24454318
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -296,7 +318,7 @@ AudioMixerSnapshotController:
     17bb417470c5e554fb3f727205866fcb: 1
     2d4696d4d09809e49b3613b5c0871210: 1
     29b630454f5b6d0498729c583a77dbd6: 0.49999925
-    688351851f34765428b84a57846fe0d6: 0.9
+    688351851f34765428b84a57846fe0d6: 0.5
     4ca3b2c5120c9cf49aec996ebbf7c3c7: 6730
     1c39652680826dc4291a9b198367b2f6: 155
     8d969f36c9d0dd14982abe50d46bb15a: 5.8
@@ -308,13 +330,15 @@ AudioMixerSnapshotController:
     275130b8888edfb46852053aa0a7c51f: 250
     788ed129373b32d4b936ad4ee5cb28c0: 100
     65f554899307aa44db6ab6c3cdac8ef4: -2116
-    c7034199943d3dc4eb1f2d1e4e68fcbb: 0
+    c7034199943d3dc4eb1f2d1e4e68fcbb: -3.8468575
     d5dcc23a83891164789a98cea5e87a7c: 0.729
     c6a5015a3f39c024199655f87c25c971: 1
     b47d258ad2d009a4d8a95aacc4133d66: -875
     4b1b8e2b95d16314f8e6852c475656e6: 0
     a7c0401cd3a542444b0c3c2d766d3c93: 0.01
-    4857614c8e215c140a3f779361a05bed: 0
+    4857614c8e215c140a3f779361a05bed: 2.090601
+    84c5ca4c3e4d1b0458c47af6c0fa3cf2: 2
     c18bc97d9519c454aa20446483fb5900: 845
+    fbfe503e50f3fbd419a0e9d023d92ffb: 0
     e7a0528ecf3e47042840fbe328e9a1fc: 0
   m_TransitionOverrides: {}
