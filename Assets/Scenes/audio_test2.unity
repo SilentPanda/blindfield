@@ -301,12 +301,13 @@ MonoBehaviour:
     note: 
     frequency: 0
     gain: 0.1
-    gainPhaseSpeed: 0
-    gainPhaseRange: 0
+    gainPhaseSpeed: 20
+    gainPhaseRange: 0.025
     square: 1
     phase: 0
     increment: 0
   activeMelody: []
+  enableArpeggios: 1
 --- !u!82 &570333914
 AudioSource:
   m_ObjectHideFlags: 0
@@ -730,7 +731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 048d4f0b1e38f884db1af66642934edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BPM: 160
+  BPM: 80
 --- !u!1 &1470585360
 GameObject:
   m_ObjectHideFlags: 0
@@ -957,8 +958,8 @@ MonoBehaviour:
     note: 
     frequency: 0
     gain: 0.05
-    gainPhaseSpeed: 0
-    gainPhaseRange: 0
+    gainPhaseSpeed: 1
+    gainPhaseRange: 0.0125
     square: 1
     phase: 0
     increment: 0
