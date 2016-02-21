@@ -14,8 +14,6 @@
 			CGPROGRAM
 			#pragma vertex vert
 			#pragma fragment frag
-			// make fog work
-			#pragma multi_compile_fog
 			
 			#include "UnityCG.cginc"
 
@@ -53,7 +51,7 @@
 				half2 uv = half2(0,0);
 				uv.x = _Time.x;
 
-				return lerp(half4(0, 0, 0, 0), half4(.25, 0, 0, 0), _DangerT);
+				return lerp(half4(0, 0, 0, 0), half4(.5, 0, 0, 0), _DangerT);
 			}
 			ENDCG
 		}
