@@ -6,7 +6,7 @@ using InControl;
 public class CirclesOverTargetsRuleSet : BaseRuleSet {
     /*public int circleCount = 1;
     public int targetCount = 1;*/
-    public float inputSpeed = 0.2f;
+    public float inputSpeed = 0.12f;
 
     private float overlapThreshold = 1.0f;
     private float winWait = 0.25f;

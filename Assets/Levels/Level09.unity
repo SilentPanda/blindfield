@@ -112,12 +112,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ca2fb906206a4517ba9fd0387321351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputSpeed: 0.2
-  circles:
-  - {fileID: 1558495692}
-  - {fileID: 1684869539}
-  targets:
-  - {fileID: 1535029055}
+  inputSpeed: 0.12
+  circles: []
+  targets: []
 --- !u!4 &72608655
 Transform:
   m_ObjectHideFlags: 0
@@ -760,18 +757,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54ab9774c52b3704785b5d31045a34af, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1535029055 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 180634, guid: 54ab9774c52b3704785b5d31045a34af, type: 2}
-  m_PrefabInternal: {fileID: 1535029054}
---- !u!1 &1558495692 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 168806, guid: 9bc33d54a2f2519458923bd096e83cb1, type: 2}
-  m_PrefabInternal: {fileID: 337389753}
---- !u!1 &1684869539 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 168806, guid: 9bc33d54a2f2519458923bd096e83cb1, type: 2}
-  m_PrefabInternal: {fileID: 607239895}
 --- !u!1 &1826222220
 GameObject:
   m_ObjectHideFlags: 0

@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ca2fb906206a4517ba9fd0387321351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputSpeed: 0.5
+  inputSpeed: 0.12
   circles:
   - {fileID: 1444646293}
   targets:
@@ -128,7 +128,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
 --- !u!1001 &134397041
 Prefab:
   m_ObjectHideFlags: 0
