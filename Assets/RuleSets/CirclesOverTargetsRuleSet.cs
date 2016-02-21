@@ -4,7 +4,10 @@ using UnityEngine;
 using InControl;
 
 public class CirclesOverTargetsRuleSet : BaseRuleSet {
+
+
     public float inputSpeed = 0.12f;
+
 
     protected float overlapThreshold = 1.0f;
 
@@ -16,7 +19,9 @@ public class CirclesOverTargetsRuleSet : BaseRuleSet {
 
     void Update() {
         CheckCompletionConditions();
+        
     }
+
 
     void FixedUpdate() {
 		InputDevice controller = ControllerInput.GetController();
@@ -35,7 +40,34 @@ public class CirclesOverTargetsRuleSet : BaseRuleSet {
             circles[0].transform.position += (Vector3)controller.LeftStick.Value * inputSpeed;
             circles[1].transform.position += (Vector3)controller.RightStick.Value * inputSpeed;
         }
+
     }
+
+	/*protected virtual void Control(InputDevice controller) {
+=======
+
+        targets.Clear();
+    }
+
+    void Update() {
+        CheckCompletionConditions();
+        var controller = ControllerInput.GetController();
+        Control(controller);
+        ClampCircles();
+    }
+
+	void FixedUpdate() {
+		
+	}
+
+	protected virtual void Control(InputDevice controller) {
+>>>>>>> Stashed changes
+		var movement = ControllerInput.TwoStickCombine(controller);
+		foreach (var circle in circles) {
+			circle.transform.position += movement * inputSpeed * Time.deltaTime;
+		}
+		ControllerInput.ShakeOnDifferentInput(controller);
+	}*/
 
     private void ClampCircles() {
         var lowerLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
