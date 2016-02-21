@@ -644,6 +644,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCircle1: {fileID: 687892578}
   playerCircle2: {fileID: 2086949104}
-  breakApartSpeed: 0.01
+  breakApartSpeed: 0.05
   breakApartDist: 2
   inputSpeed: 0.2
