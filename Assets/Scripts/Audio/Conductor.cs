@@ -100,6 +100,16 @@ public class Conductor : MonoBehaviour
         return false;
     }
 
+    public static void Play()
+    {
+        instance.running = true;
+    }
+
+    public static void Stop()
+    {
+        instance.running = false;
+    }
+
     static Conductor instance;
     public static float _BPM
     {
@@ -217,8 +227,9 @@ public class Conductor : MonoBehaviour
         melody.SetNotes(s.melody);
         drums.SetNotes(s.drums);
         synth.SetNotes(s.synth);
-        running = true;
         beat = 0;
+
+        Play();
     }
 
     void FixedUpdate()

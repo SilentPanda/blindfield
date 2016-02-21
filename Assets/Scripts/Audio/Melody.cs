@@ -105,9 +105,8 @@ public class Melody : WavePlayer
             if (index == activeArpeggio.Length) index--;
 
             activeWave.note = Conductor.GetRelativeNoteInKey(Conductor.activeKey, baseNote, activeArpeggio[index]);
-            activeWave.frequency = NoteConverter.getFreq(activeWave.note);
+            //activeWave.frequency = NoteConverter.getFreq(activeWave.note);
         }
-        
 
         base.OnAudioFilterRead(data, channels);
     }

@@ -75,7 +75,12 @@ public class Synth : WavePlayer
     protected override void OnAudioFilterRead(float[] data, int channels)
     {
         if (activeWave.gain == 0) return;
-        
+
+        if (!string.IsNullOrEmpty(activeWave.note))
+        {
+            activeWave.frequency = NoteConverter.getFreq(activeWave.note);
+        }
+
         activeWave.increment = activeWave.frequency * 2 * Mathf.PI / GlobalSoundVariables.SAMPLING_FREQUENCY;
         for (var i = 0; i < data.Length; i = i + channels)
         {

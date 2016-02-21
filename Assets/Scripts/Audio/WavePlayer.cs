@@ -22,6 +22,11 @@ public class WavePlayer : MonoBehaviour
         else
         {
             //play activeWave
+            if ( !string.IsNullOrEmpty( activeWave.note ) )
+            {
+                activeWave.frequency = NoteConverter.getFreq(activeWave.note);
+            }
+
             activeWave.increment = activeWave.frequency * 2 * Mathf.PI / GlobalSoundVariables.SAMPLING_FREQUENCY;
             for (var i = 0; i < data.Length; i = i + channels)
             {

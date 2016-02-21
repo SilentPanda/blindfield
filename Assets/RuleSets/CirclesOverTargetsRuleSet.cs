@@ -19,7 +19,6 @@ public class CirclesOverTargetsRuleSet : BaseRuleSet {
 
     void Update() {
         CheckCompletionConditions();
-        
     }
 
 
@@ -37,8 +36,8 @@ public class CirclesOverTargetsRuleSet : BaseRuleSet {
 
             ControllerInput.ShakeOnDifferentInput(controller);
         } else if (circles.Count == 2) {
-            circles[0].transform.position += (Vector3)controller.LeftStick.Value * inputSpeed;
-            circles[1].transform.position += (Vector3)controller.RightStick.Value * inputSpeed;
+            circles[0].transform.position += (Vector3)( controller.LeftStick.Value * inputSpeed * Time.deltaTime );
+            circles[1].transform.position += (Vector3)( controller.RightStick.Value * inputSpeed * Time.deltaTime );
         }
 
     }
@@ -88,7 +87,7 @@ public class CirclesOverTargetsRuleSet : BaseRuleSet {
         }
     }
 
-    private void CheckCompletionConditions() {
+    protected virtual void CheckCompletionConditions() {
         if (!enabled) {
             return;
         }

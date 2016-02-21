@@ -6,20 +6,35 @@ using InControl;
 public class MixerControls : MonoBehaviour
 {
     public AudioMixerGroup mixerGroup;
-       
-	// Update is called once per frame
-	void Update ()
+    Conductor conductor;
+
+    public float minBPM, maxBPM;
+    public float minDist, maxDist;
+
+    public Transform heavyPlayer, lightPlayer;
+    public Transform treasure;
+
+    void Start()
+    {
+        conductor = FindObjectOfType<Conductor>();
+    }
+
+    // Update is called once per frame
+    void Update()
     {
         InputDevice device = InputManager.ActiveDevice;
         InputManager.AttachDevice(device);
 
-        float avgX = (device.LeftStick.X + device.RightStick.X) * .5f;
-        //remap
-        avgX = (avgX + 1) * .5f;
-
-        if ( !mixerGroup.audioMixer.SetFloat("EQ_Freq", Mathf.Lerp(100, 3000, avgX) ) )
+        if (conductor)
         {
-            Debug.LogWarning("NOT FOUND: EQ_Freq");
+            float d1 = Vector3.Distance(heavyPlayer.position, treasure.position);
+            float d2 = Vector3.Distance(lightPlayer.position, treasure.position);
+
+            float dist = Mathf.Min(d1, d2);
+
+            dist = Mathf.Clamp(dist, minDist, maxDist);
+            float t = (dist - minDist) / (maxDist - minDist);
+            conductor.BPM = Mathf.Lerp(minBPM, maxBPM, 1 - Mathf.Pow( t, 8 ));
         }
     }
 }

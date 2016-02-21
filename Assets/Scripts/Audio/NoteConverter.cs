@@ -3,6 +3,9 @@ using System.Collections;
 
 public static class NoteConverter
 {
+    public static int halfStepOffset = 0;
+    public static float freqOffset = 0;
+
     //function for calculating frequency offset
     //fn = f0 * (x)n
     //x = pow( 2, ( 1.0 / 12.0 ) )
@@ -12,7 +15,7 @@ public static class NoteConverter
 
     public static float getFreq(string note)
     {
-        return freqForSteps(calcHalfSteps(note));
+        return freqForSteps(calcHalfSteps(note)) + freqOffset;
     }
 
     //freq relative to A4 from given half step distance

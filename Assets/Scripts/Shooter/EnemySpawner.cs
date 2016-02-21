@@ -23,10 +23,15 @@ public class EnemySpawner : MonoBehaviour
 
 		while (Application.isPlaying) 
 		{
-			yield return new WaitForSeconds (1f);
-			Vector3 position = Vector3.Lerp (topLeft.position, topRight.position, Random.value);
-			GameObject enemy = (GameObject)Instantiate (enemyPrefab, position, Quaternion.identity);
-		}
+            float t = Random.value;
+            float x = Mathf.Lerp(topLeft.position.x, topRight.position.x, t);
+            float y = Mathf.Lerp(topLeft.position.y, topRight.position.y, t);
+
+			Vector3 position = new Vector3(x, y, 0);
+            GameObject enemy = (GameObject)Instantiate (enemyPrefab, position, Quaternion.identity);
+
+            yield return new WaitForSeconds(2.5f);
+        }
 	}
 
 	void Beat()
