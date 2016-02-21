@@ -250,7 +250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   circleCount: 2
   targetCount: 1
-  overlapThreshold: 100
+  inputSpeed: 0.5
 --- !u!4 &1487364604
 Transform:
   m_ObjectHideFlags: 0
