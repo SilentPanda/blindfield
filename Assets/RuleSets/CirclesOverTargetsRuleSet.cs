@@ -4,10 +4,7 @@ using UnityEngine;
 using InControl;
 
 public class CirclesOverTargetsRuleSet : BaseRuleSet {
-
-
     public float inputSpeed = 0.12f;
-
 
     protected float overlapThreshold = 1.0f;
 
@@ -21,7 +18,6 @@ public class CirclesOverTargetsRuleSet : BaseRuleSet {
         CheckCompletionConditions();
     }
 
-
     void FixedUpdate() {
 		InputDevice controller = ControllerInput.GetController();
 		Control(controller);
@@ -32,41 +28,14 @@ public class CirclesOverTargetsRuleSet : BaseRuleSet {
         if (circles.Count == 1) {
             Vector3 movement = ControllerInput.TwoStickCombine(controller);
 
-            circles[0].transform.position += movement * inputSpeed;
+            circles[0].transform.position += movement * inputSpeed * Time.deltaTime;
 
             ControllerInput.ShakeOnDifferentInput(controller);
         } else if (circles.Count == 2) {
             circles[0].transform.position += (Vector3)( controller.LeftStick.Value * inputSpeed * Time.deltaTime );
             circles[1].transform.position += (Vector3)( controller.RightStick.Value * inputSpeed * Time.deltaTime );
         }
-
     }
-
-	/*protected virtual void Control(InputDevice controller) {
-=======
-
-        targets.Clear();
-    }
-
-    void Update() {
-        CheckCompletionConditions();
-        var controller = ControllerInput.GetController();
-        Control(controller);
-        ClampCircles();
-    }
-
-	void FixedUpdate() {
-		
-	}
-
-	protected virtual void Control(InputDevice controller) {
->>>>>>> Stashed changes
-		var movement = ControllerInput.TwoStickCombine(controller);
-		foreach (var circle in circles) {
-			circle.transform.position += movement * inputSpeed * Time.deltaTime;
-		}
-		ControllerInput.ShakeOnDifferentInput(controller);
-	}*/
 
     private void ClampCircles() {
         var lowerLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
