@@ -4,31 +4,31 @@ using UnityEngine;
 using InControl;
 
 public class CirclesOverTargetsRuleSet : BaseRuleSet {
-    public int circleCount = 1;
-    public int targetCount = 1;
-    public float inputSpeed = 0.5f;
+    /*public int circleCount = 1;
+    public int targetCount = 1;*/
+    public float inputSpeed = 0.2f;
 
     private float overlapThreshold = 1.0f;
     private float winWait = 0.25f;
     private float winTime = 0.0f;
 
     // TODO: Pass these in as editor properties?
-    public GameObject playerCirclePrefab;
-    public GameObject targetPrefab;
+    /*public GameObject playerCirclePrefab;
+    public GameObject targetPrefab;*/
 
     public List<GameObject> circles = new List<GameObject>();
     public List<GameObject> targets = new List<GameObject>();
 
     protected virtual void Awake() {
-        if (!playerCirclePrefab)
+        /*if (!playerCirclePrefab)
             playerCirclePrefab = Resources.Load("PlayerCircle") as GameObject;
         if(!targetPrefab)
-            targetPrefab = Resources.Load("Target") as GameObject;
+            targetPrefab = Resources.Load("Target") as GameObject;*/
 
     }
 
     protected virtual void OnEnable() {
-        for (int i = 0; i < circleCount; i++) {
+        /*for (int i = 0; i < circleCount; i++) {
             GameObject circle = Instantiate(playerCirclePrefab);
 
             circle.name = String.Format("Player Circle {0}", i);
@@ -53,7 +53,7 @@ public class CirclesOverTargetsRuleSet : BaseRuleSet {
 			);
 
             targets.Add(target);
-        }
+        }*/
     }
 
     void OnDisable() {
@@ -118,6 +118,7 @@ public class CirclesOverTargetsRuleSet : BaseRuleSet {
 
         if (winTime >= winWait) {
             OnCompleted();
+			Debug.Log ("Win!");
         }
     }
 
