@@ -6,7 +6,8 @@ using InControl;
 public class CirclesOverTargetsRuleSet : BaseRuleSet {
     public float inputSpeed = 0.12f;
 
-    private float overlapThreshold = 1.0f;
+    protected float overlapThreshold = 1.0f;
+
     private float winWait = 0.25f;
     private float winTime = 0.0f;
 
@@ -81,13 +82,14 @@ public class CirclesOverTargetsRuleSet : BaseRuleSet {
         }
     }
 
-    private bool AllOverlap() {
+    protected virtual bool AllOverlap() {
         if (circles.Count < 1) {
             return false;
         }
 
         foreach (GameObject circle in circles) {
-			bool circleOverlap = false;
+			bool circleOverlaps = false;
+
             foreach (GameObject target in targets) {
                 float distance = Vector2.Distance(
                     circle.transform.position, target.transform.position
@@ -95,7 +97,9 @@ public class CirclesOverTargetsRuleSet : BaseRuleSet {
 
                 // TODO: Fix this to check that they're within the bounds instead.
                 if (distance < overlapThreshold) {
-					circleOverlap = true;
+					circleOverlaps = true;
+
+                    break;
                 }
 
 				// var circleBounds = circle.GetComponent<SpriteRenderer>().sprite.bounds;
@@ -104,11 +108,11 @@ public class CirclesOverTargetsRuleSet : BaseRuleSet {
 				// Debug.Log ("Target" + targetBounds);
 				// if (targetBounds.Contains (circleBounds.min)
 				//    && targetBounds.Contains (circleBounds.max)) {
-				// 	circleOverlap = true;
+				// 	circleOverlaps = true;
 				// }
             }
 
-			if (!circleOverlap) {
+			if (!circleOverlaps) {
 				return false;
 			}
         }
