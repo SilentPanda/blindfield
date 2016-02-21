@@ -1,12 +1,7 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour {
+public class LevelManager : IndestructibleBehaviour {
     private int sceneIndex = 0;
-
-    void Awake() {
-        DontDestroyOnLoad(gameObject);
-    }
 
     void Start() {
         LoadNextScene();
