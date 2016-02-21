@@ -249,6 +249,7 @@
      <Compile Include="Assets\RuleSets\CirclesOverTargetsRuleSet.cs" />
      <Compile Include="Assets\RuleSets\OverlappingCirclesRuleSet.cs" />
      <Compile Include="Assets\RuleSets\RuleSetManager.cs" />
+     <Compile Include="Assets\RuleSets\TetheredCirclesRuleSet.cs" />
      <Compile Include="Assets\Scripts\Audio\Conductor.cs" />
      <Compile Include="Assets\Scripts\Audio\Drums.cs" />
      <Compile Include="Assets\Scripts\Audio\GlobalSoundVariables.cs" />
