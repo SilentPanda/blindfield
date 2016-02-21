@@ -93,8 +93,9 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 118948833}
+  - 114: {fileID: 118948834}
   m_Layer: 0
-  m_Name: MineSpawner
+  m_Name: GameStart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,7 +112,22 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 12
+--- !u!114 &118948834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 118948832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e95aa6dfe8d3c4408eae70dc81e23b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lightPlayer: {fileID: 1943258300}
+  heavyPlayer: {fileID: 1536303223}
+  treasure: {fileID: 808973979}
+  minePrefab: {fileID: 193936, guid: d9915ec81457dec45b907d990b28c6cd, type: 2}
 --- !u!1 &223798730
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,7 +247,7 @@ Transform:
   m_Children:
   - {fileID: 1775173509}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!1 &301428400
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,6 +671,10 @@ Prefab:
     - target: {fileID: 21206744, guid: 54ab9774c52b3704785b5d31045a34af, type: 2}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 180634, guid: 54ab9774c52b3704785b5d31045a34af, type: 2}
+      propertyPath: m_Name
+      value: Treasure
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54ab9774c52b3704785b5d31045a34af, type: 2}
@@ -1119,52 +1139,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 438372, guid: 21fe11b4542ef452ca45024e8a0c375f, type: 2}
   m_PrefabInternal: {fileID: 1775173508}
---- !u!1001 &1804004332
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 476118, guid: d9915ec81457dec45b907d990b28c6cd, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -4.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 476118, guid: d9915ec81457dec45b907d990b28c6cd, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -0.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 476118, guid: d9915ec81457dec45b907d990b28c6cd, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 476118, guid: d9915ec81457dec45b907d990b28c6cd, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 476118, guid: d9915ec81457dec45b907d990b28c6cd, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 476118, guid: d9915ec81457dec45b907d990b28c6cd, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 476118, guid: d9915ec81457dec45b907d990b28c6cd, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 476118, guid: d9915ec81457dec45b907d990b28c6cd, type: 2}
-      propertyPath: m_RootOrder
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 11444600, guid: d9915ec81457dec45b907d990b28c6cd, type: 2}
-      propertyPath: explosion
-      value: 
-      objectReference: {fileID: 8300000, guid: f754c43e384bd2841b24ff5f62dd3d30, type: 3}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: d9915ec81457dec45b907d990b28c6cd, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1906749082
 GameObject:
   m_ObjectHideFlags: 0
@@ -1189,15 +1163,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1906749082}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ca2fb906206a4517ba9fd0387321351, type: 3}
+  m_Script: {fileID: 11500000, guid: eab67680dc4934eab9d7daff04f7e82a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inputSpeed: 1
-  circles:
-  - {fileID: 1536303223}
-  - {fileID: 1943258300}
-  targets:
-  - {fileID: 808973979}
+  heavyPlayer: {fileID: 1536303223}
+  lightPlayer: {fileID: 1943258300}
+  treasure: {fileID: 808973979}
 --- !u!4 &1906749084
 Transform:
   m_ObjectHideFlags: 0
