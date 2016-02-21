@@ -14,20 +14,6 @@ public class CirclesOverTargetsRuleSet : BaseRuleSet {
     public List<GameObject> circles = new List<GameObject>();
     public List<GameObject> targets = new List<GameObject>();
 
-    void OnDisable() {
-        foreach (GameObject circle in circles) {
-            Destroy(circle);
-        }
-
-        circles.Clear();
-
-        foreach (GameObject target in targets) {
-            Destroy(target);
-        }
-
-        targets.Clear();
-    }
-
     void Update() {
         CheckCompletionConditions();
     }
