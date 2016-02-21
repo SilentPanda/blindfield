@@ -71,12 +71,14 @@ public class CirclesOverTargetsRuleSet : BaseRuleSet {
     }
 
     void Update() {
-		var controller = ControllerInput.GetController();
-
         CheckCompletionConditions();
-		Control (controller);
-        ClampCircles();
     }
+
+	void FixedUpdate() {
+		var controller = ControllerInput.GetController();
+		Control (controller);
+		ClampCircles();
+	}
 
 	protected virtual void Control(InputDevice controller) {
 		var movement = ControllerInput.TwoStickCombine(controller);
