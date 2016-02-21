@@ -18,19 +18,24 @@ public class CirclesOverTargetsRuleSet : BaseRuleSet {
         CheckCompletionConditions();
     }
 
-	void FixedUpdate() {
-		var controller = ControllerInput.GetController();
-		Control (controller);
+    void FixedUpdate() {
+		InputDevice controller = ControllerInput.GetController();
+		Control(controller);
 		ClampCircles();
 	}
 
-	protected virtual void Control(InputDevice controller) {
-		var movement = ControllerInput.TwoStickCombine(controller);
-		foreach (var circle in circles) {
-			circle.transform.position += movement * inputSpeed;
-		}
-		ControllerInput.ShakeOnDifferentInput(controller);
-	}
+    protected virtual void Control(InputDevice controller) {
+        if (circles.Count == 1) {
+            Vector3 movement = ControllerInput.TwoStickCombine(controller);
+
+            circles[0].transform.position += movement * inputSpeed;
+
+            ControllerInput.ShakeOnDifferentInput(controller);
+        } else if (circles.Count == 2) {
+            circles[0].transform.position += (Vector3)controller.LeftStick.Value * inputSpeed;
+            circles[1].transform.position += (Vector3)controller.RightStick.Value * inputSpeed;
+        }
+    }
 
     private void ClampCircles() {
         var lowerLeft = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
