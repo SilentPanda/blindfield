@@ -20,7 +20,7 @@ public class BlindfieldRuleSet : MonoBehaviour {
 			UpdatePlayers ();
 			CheckWinConditions ();
 		} else {
-			WinDisplay ();
+			ResetOnButton ();
 		}
     }
 
@@ -69,8 +69,9 @@ public class BlindfieldRuleSet : MonoBehaviour {
 		won = true;
 		treasure.GetComponent<SpriteRenderer> ().enabled = true;
 		GameObject.Instantiate (onWin);
+		Conductor.Stop ();
 	}
 
-	private void WinDisplay() {
+	private void ResetOnButton() {
 	}
 }
