@@ -7,13 +7,11 @@ public class TetheredCirclesRuleSet : CirclesOverTargetsRuleSet {
 	private GameObject tetherPrefab;
 	private GameObject tether;
 
-	protected override void Awake() {
-		base.Awake ();
+	void Awake() {
 		tetherPrefab = Resources.Load ("Tether") as GameObject;
 	}
 
-	protected override void OnEnable() {
-		base.OnEnable ();
+	void OnEnable() {
 		tether = GameObject.Instantiate (tetherPrefab);
 	}
 
