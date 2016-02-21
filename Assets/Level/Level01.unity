@@ -255,7 +255,6 @@ GameObject:
   - 4: {fileID: 986738974}
   - 114: {fileID: 986738973}
   - 114: {fileID: 986738972}
-  - 114: {fileID: 986738975}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -307,24 +306,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
---- !u!114 &986738975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 986738971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ca2fb906206a4517ba9fd0387321351, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  circleCount: 2
-  targetCount: 1
-  inputSpeed: 0.5
-  playerCirclePrefab: {fileID: 0}
-  targetPrefab: {fileID: 0}
-  circles: []
-  targets: []
 --- !u!1 &1283060579
 GameObject:
   m_ObjectHideFlags: 0
