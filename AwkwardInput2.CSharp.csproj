@@ -58,12 +58,6 @@
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
-    </Reference>
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
@@ -268,6 +262,7 @@
     <Compile Include="Assets\InControl\Source\iCade\ICadeNative.cs" />
     <Compile Include="Assets\InControl\Source\iCade\ICadeState.cs" />
     <Compile Include="Assets\InControl\Test\TestInputManager.cs" />
+    <Compile Include="Assets\PostProcessing\ColorShifter.cs" />
     <Compile Include="Assets\RuleSets\BaseRuleSet.cs" />
     <Compile Include="Assets\RuleSets\CirclesOverTargetsRuleSet.cs" />
     <Compile Include="Assets\RuleSets\OverlappingCirclesRuleSet.cs" />
@@ -286,6 +281,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\InControl\Readme\README.txt" />
+    <None Include="Assets\Shaders\Background.shader" />
     <None Include="Assets\StreamingAssets\Songs\1.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

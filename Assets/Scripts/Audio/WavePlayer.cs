@@ -5,7 +5,7 @@ using System.Collections.Generic;
 [RequireComponent(typeof(AudioSource))]
 public class WavePlayer : MonoBehaviour
 {
-    protected Wave activeWave;
+    protected Wave activeWave = new Wave();
     protected float time;
 
     protected virtual void FixedUpdate()
@@ -15,7 +15,7 @@ public class WavePlayer : MonoBehaviour
 
     protected virtual void OnAudioFilterRead( float[] data, int channels )
     {
-        if ( activeWave == null )
+        if ( activeWave.gain == 0 )
         {
             //play silence
         }
@@ -29,7 +29,7 @@ public class WavePlayer : MonoBehaviour
                 // this is where we copy audio data to make them “available” to Unity
                 float targetGain = (activeWave.gain + Mathf.Sin(activeWave.gainPhaseSpeed * time) * activeWave.gainPhaseRange);
                 data[i] = (float)(targetGain) * Mathf.Sin(activeWave.phase);
-                if (activeWave != null && activeWave.square) data[i] = (data[i] > 0) ? targetGain : -targetGain;
+                if (activeWave.square) data[i] = (data[i] > 0) ? targetGain : -targetGain;
                 // if we have stereo, we copy the mono data to each channel
                 if (channels == 2) data[i + 1] = data[i];
                 if (activeWave.phase > 2 * Mathf.PI) activeWave.phase = 0;
