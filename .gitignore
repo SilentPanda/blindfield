@@ -25,3 +25,5 @@ ExportedObj/
 sysinfo.txt
 
 *.sublime-*
+
+.DS_Store
