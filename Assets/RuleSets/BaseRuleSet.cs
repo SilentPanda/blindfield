@@ -1,12 +1,21 @@
 using UnityEngine;
 
 public class BaseRuleSet : MonoBehaviour {
-    public delegate void CompletedEventHandler();
-    public event CompletedEventHandler onCompleted;
+    private bool completed = false;
 
     protected void OnCompleted() {
-        if (onCompleted != null) {
-            onCompleted();
+        if (completed) {
+            return;
+        }
+
+        completed = true;
+
+        LevelManager[] levelManager = GameObject.FindObjectsOfType(
+            typeof(LevelManager)
+        ) as LevelManager[];
+
+        if (levelManager.Length > 0) {
+            levelManager[0].LoadLevel();
         }
     }
 }

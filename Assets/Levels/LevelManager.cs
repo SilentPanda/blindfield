@@ -1,17 +1,27 @@
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : IndestructibleBehaviour {
     public int levelIndex = 1;
+
+    private BaseRuleSet currentRuleSet;
 
     void Start() {
         LoadLevel();
     }
 
-    void OnLevelWasLoaded(int loadedLevelIndex) {
-        levelIndex++;
-    }
+    public void LoadLevel() {
+        if (levelIndex > SceneManager.sceneCount) {
+            Debug.Log("The End!");
 
-    private void LoadLevel() {
-        Application.LoadLevel(levelIndex);
+            return;
+        }
+
+        Debug.Log(String.Format("Loading level {0}", levelIndex));
+
+        SceneManager.LoadScene(levelIndex);
+
+        levelIndex++;
     }
 }
