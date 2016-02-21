@@ -47,6 +47,7 @@ public class BlindfieldRuleSet : MonoBehaviour {
 
     private bool ShouldWin() {
         Bounds treasureBounds = treasure.GetComponent<SpriteRenderer>().sprite.bounds;
+        treasureBounds.size = treasureBounds.size * treasure.transform.localScale.x;
 
         Vector2 heavyPlayerToTreasure = (Vector2)(
             heavyPlayer.transform.position - treasure.transform.position
