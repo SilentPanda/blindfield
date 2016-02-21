@@ -1,15 +1,15 @@
 using UnityEngine;
 
 public class LevelManager : IndestructibleBehaviour {
-    private int sceneIndex = 0;
+    public int sceneIndex = 1;
 
     void Start() {
-        LoadNextScene();
+        LoadScene();
     }
 
-    private void LoadNextScene() {
-        sceneIndex++;
-
+    private void LoadScene() {
         Application.LoadLevel(sceneIndex);
+
+        sceneIndex++;
     }
 }
