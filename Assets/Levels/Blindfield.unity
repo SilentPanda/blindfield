@@ -112,7 +112,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
 --- !u!114 &118948834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +217,7 @@ RectTransform:
   - {fileID: 1252947772}
   - {fileID: 301428401}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -250,7 +250,7 @@ Transform:
   m_Children:
   - {fileID: 1775173509}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1 &301428400
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,7 +457,7 @@ TrailRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 468944368}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -558,7 +558,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1001 &808973978
 Prefab:
   m_ObjectHideFlags: 0
@@ -605,6 +605,10 @@ Prefab:
     - target: {fileID: 180634, guid: 54ab9774c52b3704785b5d31045a34af, type: 2}
       propertyPath: m_Name
       value: Treasure
+      objectReference: {fileID: 0}
+    - target: {fileID: 21206744, guid: 54ab9774c52b3704785b5d31045a34af, type: 2}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 54ab9774c52b3704785b5d31045a34af, type: 2}
@@ -702,7 +706,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!1001 &1129507720
 Prefab:
   m_ObjectHideFlags: 0
@@ -807,7 +811,7 @@ TrailRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1129566916}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
@@ -848,48 +852,6 @@ TrailRenderer:
       rgba: 16733696
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
---- !u!1001 &1200483549
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 428024, guid: 63fa6fb7a5967a24e98819dc52a64fa9, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0.4212451
-      objectReference: {fileID: 0}
-    - target: {fileID: 428024, guid: 63fa6fb7a5967a24e98819dc52a64fa9, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.3315782
-      objectReference: {fileID: 0}
-    - target: {fileID: 428024, guid: 63fa6fb7a5967a24e98819dc52a64fa9, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -10.808594
-      objectReference: {fileID: 0}
-    - target: {fileID: 428024, guid: 63fa6fb7a5967a24e98819dc52a64fa9, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 428024, guid: 63fa6fb7a5967a24e98819dc52a64fa9, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 428024, guid: 63fa6fb7a5967a24e98819dc52a64fa9, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 428024, guid: 63fa6fb7a5967a24e98819dc52a64fa9, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 428024, guid: 63fa6fb7a5967a24e98819dc52a64fa9, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 63fa6fb7a5967a24e98819dc52a64fa9, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1252947771
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,6 +1013,7 @@ MonoBehaviour:
   treasure: {fileID: 808973981}
   maxRange: 3
   vibration: 0
+  trail: {fileID: 1129566918}
 --- !u!4 &1536303227 stripped
 Transform:
   m_PrefabParentObject: {fileID: 476738, guid: 9bc33d54a2f2519458923bd096e83cb1, type: 2}
@@ -1095,7 +1058,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 9
 --- !u!1001 &1775173508
 Prefab:
   m_ObjectHideFlags: 0
@@ -1182,6 +1145,7 @@ MonoBehaviour:
   lightPlayer: {fileID: 1943258300}
   treasure: {fileID: 808973979}
   onWin: {fileID: 142914, guid: 75a47275a2528bb459f66ae2bf23069c, type: 2}
+  victory: {fileID: 8300000, guid: dcd710cd8c1194dc0b241e89d9010e60, type: 3}
 --- !u!4 &1906749084
 Transform:
   m_ObjectHideFlags: 0
@@ -1193,7 +1157,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!1001 &1926765741
 Prefab:
   m_ObjectHideFlags: 0
@@ -1231,7 +1195,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 476738, guid: 9bc33d54a2f2519458923bd096e83cb1, type: 2}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 168806, guid: 9bc33d54a2f2519458923bd096e83cb1, type: 2}
       propertyPath: m_Name
@@ -1282,6 +1246,7 @@ MonoBehaviour:
   treasure: {fileID: 808973981}
   maxRange: 3
   vibration: 0
+  trail: {fileID: 468944370}
 --- !u!4 &1943258304 stripped
 Transform:
   m_PrefabParentObject: {fileID: 476738, guid: 9bc33d54a2f2519458923bd096e83cb1, type: 2}

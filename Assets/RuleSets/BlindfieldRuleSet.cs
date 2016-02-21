@@ -1,5 +1,6 @@
 using InControl;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BlindfieldRuleSet : MonoBehaviour {
     public float inputSpeed = 1;
@@ -10,6 +11,8 @@ public class BlindfieldRuleSet : MonoBehaviour {
     public GameObject treasure;
 
 	public GameObject onWin;
+
+    public AudioClip victory;
 
     private float winWait = 0.25f;
     private float winTime = 0.0f;
@@ -71,8 +74,18 @@ public class BlindfieldRuleSet : MonoBehaviour {
 		treasure.GetComponent<SpriteRenderer> ().enabled = true;
 		GameObject.Instantiate (onWin);
 		Conductor.Stop ();
+
+        AudioSource.PlayClipAtPoint(victory, Camera.main.transform.position);
 	}
 
-	private void ResetOnButton() {
-	}
+	private void ResetOnButton()
+    {
+        InputDevice device = InputManager.ActiveDevice;
+        InputManager.AttachDevice(device);
+
+        if ( device.AnyButton.IsPressed )
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
 }

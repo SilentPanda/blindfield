@@ -9,8 +9,16 @@ public class LightPlayer : MonoBehaviour
 
     public float vibration = 0;
 
-	// Update is called once per frame
-	void Update ()
+    public TrailRenderer trail;
+    IEnumerator Start()
+    {
+        yield return new WaitForSeconds(.1f);
+        trail.Clear();
+        trail.enabled = true;
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
         InputDevice device = InputManager.ActiveDevice;
         InputManager.AttachDevice(device);

@@ -9,6 +9,14 @@ public class HeavyPlayer : MonoBehaviour
 
     public float vibration = 0;
 
+    public TrailRenderer trail;
+    IEnumerator Start()
+    {
+        yield return new WaitForSeconds(.1f);
+        trail.Clear();
+        trail.enabled = true;
+    }
+
 	// Update is called once per frame
 	void Update ()
     {
