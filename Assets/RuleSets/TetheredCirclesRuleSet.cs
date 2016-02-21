@@ -20,7 +20,7 @@ public class TetheredCirclesRuleSet : CirclesOverTargetsRuleSet {
 		circles [1].transform.position += (Vector3)controller.RightStick.Value * inputSpeed;
 		//ControllerInput.ShakeOnDifferentInput (controller);
 
-		TetherCircles ();
+		TetherCircles();
 
 		var renderer = tether.GetComponent<LineRenderer> ();
 		renderer.SetPosition (0, circles [0].transform.position);
