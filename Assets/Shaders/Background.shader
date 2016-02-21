@@ -24,10 +24,7 @@ Shader "SilentPanda/Background" {
 
             float4 frag(v2f_img i) : COLOR
 			{
-				half2 uv = half2(0,0);
-				uv.x = distance(half2(0.5,0.5), i.uv) + _Time.w;
-
-				return half4(i.pos.xy, 0, 0);// tex2D(_MainTex, i.uv);
+				return tex2D(_MainTex, i.uv);
             }
 
             ENDCG
