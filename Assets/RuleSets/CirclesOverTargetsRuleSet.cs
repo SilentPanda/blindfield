@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CirclesOverTargetsRuleSet : BaseRuleSet {
-    public int circleCount = 2;
+    public int circleCount = 1;
     public int targetCount = 1;
     public float inputSpeed = 0.5f;
 
@@ -12,15 +12,17 @@ public class CirclesOverTargetsRuleSet : BaseRuleSet {
     private float winTime = 0.0f;
 
     // TODO: Pass these in as editor properties?
-    private GameObject playerCirclePrefab;
-    private GameObject targetPrefab;
+    public GameObject playerCirclePrefab;
+    public GameObject targetPrefab;
 
-    private List<GameObject> circles = new List<GameObject>();
-    private List<GameObject> targets = new List<GameObject>();
+    public List<GameObject> circles = new List<GameObject>();
+    public List<GameObject> targets = new List<GameObject>();
 
     void Awake() {
-        playerCirclePrefab = Resources.Load("PlayerCircle") as GameObject;
-        targetPrefab = Resources.Load("Target") as GameObject;
+        if (!playerCirclePrefab)
+            playerCirclePrefab = Resources.Load("PlayerCircle") as GameObject;
+        if(!targetPrefab)
+            targetPrefab = Resources.Load("Target") as GameObject;
     }
 
     void OnEnable() {
