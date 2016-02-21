@@ -17,33 +17,39 @@ public class DarknessArea : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //if (renderer.enabled)
-       // {
-            if (Input.GetKeyDown("space"))
+            if (Input.GetKeyDown("joystick button 0")) //press A
             {
-                SwapColors();
-            }
-       // }
+                foreach (GameObject o in affectedObjects)
+                 {
+                    SpriteRenderer s = o.GetComponent<SpriteRenderer>();
+                    s.color = Color.white;
+                    s.sortingOrder = 2;
+                 }
+        }
 	}
 
     void OnTriggerEnter2D(Collider2D other)
     {
         r.enabled = true;
+        foreach (GameObject o in affectedObjects)
+        {
+            SpriteRenderer s = o.GetComponent<SpriteRenderer>();
+            s.color = Color.black;
+            s.sortingOrder = 2;
+
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
         r.enabled = false;
-    }
-    private void SwapColors()
-    {
-        Debug.Log("swapping");
-        foreach(GameObject o in affectedObjects)
+        foreach (GameObject o in affectedObjects)
         {
-            SpriteRenderer r = o.GetComponent<SpriteRenderer>();
-            r.color = Color.white;
-            r.sortingOrder = 2;
-            
+            SpriteRenderer s = o.GetComponent<SpriteRenderer>();
+            s.color = Color.black;
+            s.sortingOrder = 2;
+
         }
     }
+    
  }
