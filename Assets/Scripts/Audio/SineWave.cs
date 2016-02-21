@@ -16,13 +16,14 @@ public class Wave
 
     public void CopyFrom( Wave otherWave )
     {
+        this.note = otherWave.note;
         this.frequency = otherWave.frequency;
         this.gain = otherWave.gain;
         this.gainPhaseSpeed = otherWave.gainPhaseSpeed;
         this.gainPhaseRange = otherWave.gainPhaseRange;
         this.square = otherWave.square;
-        this.phase = otherWave.phase;
-        this.increment = otherWave.increment;
+        //this.phase = otherWave.phase;
+        //this.increment = otherWave.increment;
     }
 }
 
