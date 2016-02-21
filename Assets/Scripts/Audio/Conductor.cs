@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 
+public delegate void BeatEvent();
+
 public class Song
 {
     public List<string> melody = new List<string>();
@@ -23,6 +25,8 @@ public class Conductor : MonoBehaviour
         {  MusicalKey.BMinor, new List<string> { "b", "c#", "d", "e", "f#", "g", "a" } },
         {  MusicalKey.BMajor, new List<string> { "b", "c#", "d#", "e", "f#", "g#", "a#" } },
     };
+
+	public static BeatEvent onBeat;
 
     public static int beat = 0;
     public static MusicalKey activeKey = MusicalKey.BMinor;
@@ -121,14 +125,11 @@ public class Conductor : MonoBehaviour
     Synth synth;
     Melody melody;
 
-    void Awake()
-    {
-        instance = this;
-    }
-
 	// Use this for initialization
-	IEnumerator Start ()
+	void Awake ()
     {
+		instance = this;
+
         rBPM = 60f / BPM;
         oldBPM = BPM;
         songs = new List<Song>();
@@ -186,13 +187,12 @@ public class Conductor : MonoBehaviour
             }
 
             count++;
-            yield return null;
         }
 
         if (songs.Count == 0)
         {
             enabled = false;
-            yield break;
+			return;
         }
 
         Song s = SelectRandomSong();
@@ -201,6 +201,13 @@ public class Conductor : MonoBehaviour
 
     Song SelectRandomSong()
     {
+		ForceSongInLevel fsil = FindObjectOfType<ForceSongInLevel> ();
+		if (FindObjectOfType<ForceSongInLevel> ()) 
+		{
+			int index = int.Parse (fsil.songName) - 1;
+			return songs [index];
+		}
+
         return songs[Random.Range(0, songs.Count)];
     }
 
@@ -221,6 +228,9 @@ public class Conductor : MonoBehaviour
             t += Time.fixedDeltaTime;
             if (t > rBPM)
             {
+				if (onBeat != null)
+					onBeat ();
+				
                 melody.DoNote();
                 synth.DoNote();
                 drums.DoNote();
