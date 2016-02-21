@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2015
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwkwardInput2.CSharp", "AwkwardInput2.CSharp.csproj", "{933DAAC3-DEF0-0819-417C-98E395DB9316}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AwkwardInput2.CSharp.Editor", "AwkwardInput2.CSharp.Editor.csproj", "{8DFF7126-A17E-1AC6-A0DD-E271AC0E3F59}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{933DAAC3-DEF0-0819-417C-98E395DB9316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{933DAAC3-DEF0-0819-417C-98E395DB9316}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{933DAAC3-DEF0-0819-417C-98E395DB9316}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{933DAAC3-DEF0-0819-417C-98E395DB9316}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DFF7126-A17E-1AC6-A0DD-E271AC0E3F59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DFF7126-A17E-1AC6-A0DD-E271AC0E3F59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DFF7126-A17E-1AC6-A0DD-E271AC0E3F59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DFF7126-A17E-1AC6-A0DD-E271AC0E3F59}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

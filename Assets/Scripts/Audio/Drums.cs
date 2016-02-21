@@ -19,10 +19,14 @@ public class Drums : MonoBehaviour
         .1f
     };
 
+    const float BPM_Conversion = .05f;
+
     public AnimationCurve kickFrequency;
     public AnimationCurve kickGain;
 
-    public string notes = "";
+    public List<string[]> variations;
+    public string[] activeMelody;
+    int currentNote = 0;
 
     System.Random random = new System.Random();
 
@@ -33,6 +37,55 @@ public class Drums : MonoBehaviour
     List<Type> types = new List<Type>();
 
     float time;
+
+    public void SetNotes( List<string> notes )
+    {
+        variations = new List<string[]>();
+
+        //parse into variations
+        for (int i = 0; i < notes.Count; ++i)
+        {
+            variations.Add(notes[i].Split(';'));
+        }
+
+        enabled = true;
+    }
+
+    public void DoNote()
+    {
+        if (activeMelody == null || currentNote >= activeMelody.Length) SelectVariation();
+
+        string note = activeMelody[currentNote];
+        string[] stuff = note.Split(',');
+        for( int i = 0; i < stuff.Length; ++i )
+        {
+            switch( stuff[i] )
+            {
+                case "b":
+                    DoKick();
+                    break;
+                case "h":
+                    DoHats();
+                    break;
+                case "s":
+                    DoSnare();
+                    break;
+            }
+        }
+
+        if (++currentNote >= activeMelody.Length) SelectVariation();
+    }
+
+    void SelectVariation()
+    {
+        if (variations == null)
+        {
+            Debug.LogError("No variations for synth!");
+            return;
+        }
+        currentNote = 0;
+        activeMelody = variations[Random.Range(0, variations.Count)];
+    }
 
     public void DoKick()
     {
@@ -72,34 +125,26 @@ public class Drums : MonoBehaviour
         startTimes.Add(Time.time);
     }
 
-    IEnumerator Start()
-    {
-        //basic base/snare
-        while ( Application.isPlaying )
-        {
-            DoKick();
-            DoHats();
-            yield return new WaitForSeconds(.25f);
-            DoHats();
-            yield return new WaitForSeconds(.25f);
-            DoSnare();
-            DoHats();
-            yield return new WaitForSeconds(.25f);
-            DoHats();
-            yield return new WaitForSeconds(.25f);
-        }
-    }
-
     void Update()
     {
         time = Time.time;
+    }
+
+    float BPMConvert( float BPM )
+    {
+        BPM = BPM - 300;
+        if (BPM < 0) return 1f;
+        else
+        {
+            return Mathf.Clamp( 1f - (BPM / 1000), .1f, 1f ); 
+        }
     }
 
     void OnAudioFilterRead(float[] data, int channels)
     {
         for (int w = 0; w < waves.Count; ++w)
         {
-            if ( time - startTimes[w] > TYPE_TIMES[(int)types[w]] )
+            if ( time - startTimes[w] > ( TYPE_TIMES[(int)types[w]] / BPMConvert( Conductor._BPM ) ) )
             {
                 startTimes.RemoveAt(w);
                 types.RemoveAt(w);
@@ -110,7 +155,7 @@ public class Drums : MonoBehaviour
             }
 
             Wave wave = waves[w];
-            float t = (time - startTimes[w]) / TYPE_TIMES[(int)types[w]];
+            float t = (time - startTimes[w]) / (TYPE_TIMES[(int)types[w]] / BPMConvert(Conductor._BPM));
 
             switch (types[w])
             {
@@ -135,42 +180,6 @@ public class Drums : MonoBehaviour
 
                     break;
             }
-            /*
-            wave.increment = ( wave.frequency * 2 * Mathf.PI ) / GlobalSoundVariables.SAMPLING_FREQUENCY;
-            for (var i = 0; i < data.Length; i = i + channels)
-            {
-                wave.phase = wave.phase + wave.increment;
-
-                // this is where we copy audio data to make them “available” to Unity
-                float targetGain;
-
-                float t = (time - startTimes[w]) / TYPE_TIMES[(int)types[w]];
-
-                
-                        //full gain, decrease exponentially, somewhat higher frequency at the start (cosine)
-
-                        float kG = kickGain.Evaluate(t);
-                        float kF = kickFrequency.Evaluate(t) * wave.frequency;
-
-                        targetGain = (float)( wave.gain * kG );
-                        data[i] = targetGain * Mathf.Sin(wave.phase);
-                        break;
-                    case Type.SNARE:
-                        targetGain = (float)(wave.gain * random.NextDouble());
-                        targetGain = (targetGain < 0) ? -targetGain : targetGain;
-                        data[i] = targetGain;
-                        break;
-                    case Type.HIHAT:
-                        targetGain = (wave.gain + Mathf.Cos(wave.gainPhaseSpeed * time) * wave.gainPhaseRange);
-                        data[i] = (float)(random.NextDouble() * Mathf.Cos(wave.phase));
-                        break;
-                }
-
-                // if we have stereo, we copy the mono data to each channel
-                if (channels == 2) data[i + 1] = data[i];
-                if (wave.phase > 2 * Mathf.PI) wave.phase = 0;
-            }
-            */
         }
     }
 

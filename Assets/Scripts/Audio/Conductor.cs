@@ -12,10 +12,105 @@ public class Song
 
 public class Conductor : MonoBehaviour
 {
-    public static int beat = 0; 
+    public enum MusicalKey
+    {
+        BMinor = 0,
+        BMajor,
+    }
+
+    public static Dictionary<MusicalKey, List<string>> keys = new Dictionary<MusicalKey, List<string>>
+    {
+        {  MusicalKey.BMinor, new List<string> { "b", "c#", "d", "e", "f#", "g", "a" } },
+        {  MusicalKey.BMajor, new List<string> { "b", "c#", "d#", "e", "f#", "g#", "a#" } },
+    };
+
+    public static int beat = 0;
+    public static MusicalKey activeKey = MusicalKey.BMinor;
+
+    public static string GetRelativeNoteInKey( MusicalKey key, string note, int distance )
+    {
+        if (string.IsNullOrEmpty(note)) return note;
+
+        int octave = int.Parse( note[ note.Length - 1 ].ToString() );
+        string checkNote = note.Substring(0, note.Length - 1);
+        string returnNote = checkNote;
+        if ( keys.ContainsKey( key ) )
+        {
+            List<string> notes = keys[key];
+            if ( notes.Contains( checkNote ) )
+            {
+                int index = notes.IndexOf(checkNote);
+                //remove octaves first (up or down)
+                while( distance > 7 )
+                {
+                    octave++;
+                    distance -= 7;
+                }
+                while( distance < -7 )
+                {
+                    octave--;
+                    distance += 7;
+                }
+                //so we're within one octave now, either up or down
+                //beyond upper limit
+                if ( index + distance > notes.Count - 1 )
+                {
+                    octave++;
+                    index = (index + distance) - notes.Count;
+                    returnNote = notes[index];
+                }
+                //beyond lower limit
+                else if ( index + distance < 0 )
+                {
+                    octave--;
+                    index = (index + distance) + notes.Count;
+                    returnNote = notes[index];
+                }
+                //in range
+                else
+                {
+                    returnNote = notes[index + distance];
+                }
+            }
+            else
+            {
+                Debug.LogError(string.Format("Note not in key {0} {1}", checkNote, key));
+            }
+        }
+        else
+        {
+            Debug.LogError("Not implemented: " + key);
+        }
+
+        return returnNote + octave.ToString();
+    }
+
+    public static bool NoteInActiveKey( string note )
+    {
+        string checkNote = note.Substring(0, note.Length - 1);
+        string returnNote = checkNote;
+        if (keys.ContainsKey(activeKey))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    static Conductor instance;
+    public static float _BPM
+    {
+        get
+        {
+            if (instance == null) instance = FindObjectOfType<Conductor>();
+            if (instance == null) return 300;
+            else return instance.BPM;
+        }
+    }
 
     List<Song> songs;
     public float BPM = 140;
+    float oldBPM = 140;
 
     Song activeSong;
     bool running = false;
@@ -27,10 +122,16 @@ public class Conductor : MonoBehaviour
     Synth synth;
     Melody melody;
 
+    void Awake()
+    {
+        instance = this;
+    }
+
 	// Use this for initialization
 	IEnumerator Start ()
     {
         rBPM = 60f / BPM;
+        oldBPM = BPM;
         songs = new List<Song>();
 
         drums = GetComponentInChildren<Drums>();
@@ -42,7 +143,7 @@ public class Conductor : MonoBehaviour
         bool run = true;
         while (run)
         {
-            string path = Path.Combine(Application.streamingAssetsPath, count.ToString() + ".txt");
+            string path = Path.Combine(Application.streamingAssetsPath, "Songs/" + count.ToString() + ".txt");
 
             if ( File.Exists( path ) )
             {
@@ -54,24 +155,29 @@ public class Conductor : MonoBehaviour
                     if ( lines[i][0] == '_' )
                     {
                         int x = i + 1;
-                        while(lines[x][0] != '_')
+                        while( x < lines.Length && lines[x][0] != '_')
                         {
                             switch( lines[i] )
                             {
                                 case "_synth":
                                     newSong.synth.Add(lines[x]);
+                                    //Debug.Log("Added synth");
                                     break;
                                 case "_melody":
                                     newSong.melody.Add(lines[x]);
+                                    //Debug.Log("Added melody");
                                     break;
                                 case "_drums":
                                     newSong.drums.Add(lines[x]);
+                                    //Debug.Log("Added drums");
                                     break;
                             }
                             x++;
                         }
                     }
                 }
+
+                songs.Add(newSong);
             }
             else
             {
@@ -101,18 +207,30 @@ public class Conductor : MonoBehaviour
     {
         activeSong = s;
         melody.SetNotes(s.melody);
+        drums.SetNotes(s.drums);
+        synth.SetNotes(s.synth);
         running = true;
         beat = 0;
     }
 
     void FixedUpdate()
     {
-        t += Time.fixedDeltaTime;
-        if ( t > rBPM )
+        if (running)
         {
-            melody.DoNote();
-            //synth.DoNote();
-            //drums.DoNote();
+            t += Time.fixedDeltaTime;
+            if (t > rBPM)
+            {
+                melody.DoNote();
+                synth.DoNote();
+                drums.DoNote();
+                t -= rBPM;
+
+                if (BPM != oldBPM)
+                {
+                    rBPM = 60f / BPM;
+                    oldBPM = BPM;
+                }
+            }
         }
     }
 }
