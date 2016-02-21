@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine.Audio;
 
 public delegate void BeatEvent();
 
@@ -103,13 +104,15 @@ public class Conductor : MonoBehaviour
     public static void Play()
     {
         instance.running = true;
+        instance.on.TransitionTo(1f);
     }
 
     public static void Stop()
     {
         instance.running = false;
+        instance.off.TransitionTo(3f);
     }
-
+    
     static Conductor instance;
     public static float _BPM
     {
@@ -120,6 +123,9 @@ public class Conductor : MonoBehaviour
             else return instance.BPM;
         }
     }
+
+    public AudioMixer mixer;
+    public AudioMixerSnapshot on, off;
 
     List<Song> songs;
     public float BPM = 140;

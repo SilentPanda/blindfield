@@ -433,6 +433,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mixerGroup: {fileID: 24358422, guid: cf0da7ad7307b554e84ac6ed6179482a, type: 2}
+  minBPM: 0
+  maxBPM: 0
+  minDist: 0
+  maxDist: 0
+  heavyPlayer: {fileID: 0}
+  lightPlayer: {fileID: 0}
+  treasure: {fileID: 0}
 --- !u!114 &11422964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -444,6 +451,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 048d4f0b1e38f884db1af66642934edf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: cf0da7ad7307b554e84ac6ed6179482a, type: 2}
+  on: {fileID: 24572216, guid: cf0da7ad7307b554e84ac6ed6179482a, type: 2}
+  off: {fileID: 24543382, guid: cf0da7ad7307b554e84ac6ed6179482a, type: 2}
   BPM: 300
 --- !u!114 &11445732
 MonoBehaviour:
