@@ -23,7 +23,9 @@ Shader "SilentPanda/Background" {
             float4 frag(v2f_img i) : COLOR {
                 float4 origin = tex2D(_MainTex, i.uv);
 
-                float4 result = mul(origin, lerp(_sourceColor, _targetColor, _blendAmount));
+                float4 result = mul(
+                    origin, lerp(_sourceColor, _targetColor, _blendAmount)
+                );
 
                 return result;
             }

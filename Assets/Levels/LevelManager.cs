@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : IndestructibleBehaviour {
     public int levelIndex = 1;
-    public int maxLevelIndex = 4;
+    public int maxLevelIndex = 9;
 
     private BaseRuleSet currentRuleSet;
 
