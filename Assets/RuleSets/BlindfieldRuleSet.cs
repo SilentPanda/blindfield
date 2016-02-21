@@ -9,12 +9,19 @@ public class BlindfieldRuleSet : MonoBehaviour {
 
     public GameObject treasure;
 
+	public GameObject onWin;
+
     private float winWait = 0.25f;
     private float winTime = 0.0f;
+	private bool won = false;
 
     void Update() {
-        UpdatePlayers();
-        CheckWinConditions();
+		if (!won) {
+			UpdatePlayers ();
+			CheckWinConditions ();
+		} else {
+			WinDisplay ();
+		}
     }
 
     private void UpdatePlayers() {
@@ -34,7 +41,7 @@ public class BlindfieldRuleSet : MonoBehaviour {
         }
 
         if (winTime >= winWait) {
-            Debug.Log("Win!");
+			Win ();
         }
     }
 
@@ -57,4 +64,13 @@ public class BlindfieldRuleSet : MonoBehaviour {
 
         return false;
     }
+
+	private void Win() {
+		won = true;
+		treasure.GetComponent<SpriteRenderer> ().enabled = true;
+		GameObject.Instantiate (onWin);
+	}
+
+	private void WinDisplay() {
+	}
 }
