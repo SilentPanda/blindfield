@@ -47,7 +47,7 @@ public class Synth : WavePlayer
         string note = activeMelody[currentNote];
         if (string.IsNullOrEmpty(note) || note == "x")
         {
-            activeWave = null;
+            activeWave.gain = 0;
         }
         else
         {
@@ -55,19 +55,18 @@ public class Synth : WavePlayer
             //string firstNote = Conductor.GetRelativeNoteInKey(Conductor.activeKey, note, 2 * 7);
             //string secondNote = Conductor.GetRelativeNoteInKey(Conductor.activeKey, note, 2 * 7 + 2);
             //Debug.Log(string.Format("Overtones: {0} , {1} from base note {2}", firstNote, secondNote, note));
-            if (activeWave != null && activeWave.frequency == f)
-            {
-                currentNote++;
-                activeWave.note = note;
-                return; //keep playing
-            }
-            else
-            {
-                activeWave = new Wave();
+            //if (activeWave.frequency == f)
+            //{
+            //    currentNote++;
+            //    activeWave.note = note;
+            //    return; //keep playing
+            //}
+            //else
+            //{
                 activeWave.CopyFrom(waveSettings);
                 activeWave.frequency = f;
                 activeWave.note = note;
-            }
+            //}
         }
 
         if (++currentNote >= activeMelody.Length) SelectVariation();
@@ -75,8 +74,8 @@ public class Synth : WavePlayer
 
     protected override void OnAudioFilterRead(float[] data, int channels)
     {
-        if (activeWave == null) return;
-
+        if (activeWave.gain == 0) return;
+        
         activeWave.increment = activeWave.frequency * 2 * Mathf.PI / GlobalSoundVariables.SAMPLING_FREQUENCY;
         for (var i = 0; i < data.Length; i = i + channels)
         {

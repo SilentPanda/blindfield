@@ -16,6 +16,8 @@ public class Wave
 
     public void CopyFrom( Wave otherWave )
     {
+        if (otherWave == null) return;
+
         this.note = otherWave.note;
         this.frequency = otherWave.frequency;
         this.gain = otherWave.gain;

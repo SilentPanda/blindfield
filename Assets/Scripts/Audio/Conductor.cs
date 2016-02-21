@@ -88,8 +88,7 @@ public class Conductor : MonoBehaviour
     public static bool NoteInActiveKey( string note )
     {
         string checkNote = note.Substring(0, note.Length - 1);
-        string returnNote = checkNote;
-        if (keys.ContainsKey(activeKey))
+        if (keys[activeKey].Contains(checkNote))
         {
             return true;
         }
@@ -152,10 +151,12 @@ public class Conductor : MonoBehaviour
                 
                 for( int i = 0; i < lines.Length; ++i )
                 {
+                    if (lines[i].Length == 0) break;
+
                     if ( lines[i][0] == '_' )
                     {
                         int x = i + 1;
-                        while( x < lines.Length && lines[x][0] != '_')
+                        while( x < lines.Length && lines[x].Length > 0 && lines[x][0] != '_')
                         {
                             switch( lines[i] )
                             {

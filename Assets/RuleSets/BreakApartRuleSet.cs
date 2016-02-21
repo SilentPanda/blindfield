@@ -20,6 +20,7 @@ public class BreakApartRuleSet : BaseRuleSet {
 	void FixedUpdate() {
 		var controller = ControllerInput.GetController ();
 		Control (controller);
+		PullTogether ();
 		ClampCircle ();
 	}
 
@@ -36,7 +37,21 @@ public class BreakApartRuleSet : BaseRuleSet {
 	private void BreakApart(InputDevice controller) {
 		var dist = (playerCircle1.transform.position - playerCircle2.transform.position).magnitude;
 		if (dist > breakApartDist) {
-			Debug.Log ("Break Apart!");
+			OnCompleted ();
+		}
+	}
+
+	private void PullTogether() {
+		var c0 = playerCircle1.transform.position;
+		var c1 = playerCircle2.transform.position;
+		Vector3 midpoint = new Vector3 ((c0.x + c1.x) / 2, (c0.y + c1.y) / 2);
+		var dist = (c0-c1).magnitude;
+
+		if (dist > 0) {
+			var relVec = (midpoint - c0);
+			playerCircle1.transform.position += relVec.normalized * breakApartSpeed / 2;
+			relVec = (midpoint - c1);
+			playerCircle2.transform.position += relVec.normalized * breakApartSpeed / 2;
 		}
 	}
 
