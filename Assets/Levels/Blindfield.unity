@@ -1163,15 +1163,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1906749082}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ca2fb906206a4517ba9fd0387321351, type: 3}
+  m_Script: {fileID: 11500000, guid: eab67680dc4934eab9d7daff04f7e82a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   inputSpeed: 1
-  circles:
-  - {fileID: 1536303223}
-  - {fileID: 1943258300}
-  targets:
-  - {fileID: 808973979}
+  heavyPlayer: {fileID: 1536303223}
+  lightPlayer: {fileID: 1943258300}
+  treasure: {fileID: 808973979}
 --- !u!4 &1906749084
 Transform:
   m_ObjectHideFlags: 0
