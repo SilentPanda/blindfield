@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : IndestructibleBehaviour {
     public int levelIndex = 1;
+    public int maxLevelIndex = 4;
 
     private BaseRuleSet currentRuleSet;
 
@@ -12,7 +13,7 @@ public class LevelManager : IndestructibleBehaviour {
     }
 
     public void LoadLevel() {
-        if (levelIndex > SceneManager.sceneCount) {
+        if (levelIndex > maxLevelIndex) {
             Debug.Log("The End!");
 
             return;
