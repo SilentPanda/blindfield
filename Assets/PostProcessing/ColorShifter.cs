@@ -8,6 +8,14 @@ public class ColorShifter : MonoBehaviour {
     private float blendAmount = 0;
     private int colorIndex = 0;
 
+    void Start()
+    {
+        for (int i = 0; i < colors.Count; ++i)
+        {
+            Shader.SetGlobalColor("_BGColor" + i, colors[i]);
+        }
+    }
+
     void FixedUpdate() {
         blendAmount += blendSpeed;
 
@@ -26,5 +34,17 @@ public class ColorShifter : MonoBehaviour {
         renderer.material.SetColor("_targetColor", colors[nextColorIndex]);
 
         renderer.material.SetFloat("_blendAmount", blendAmount);
+    }
+
+    void LateUpdate()
+    {
+        if (Mine.danger > 0)
+        {
+            Shader.SetGlobalFloat("_DangerT", ( Mathf.Sin( ( Time.time - Mine.dangerTime ) * 10 ) + 1 ) * .5f );
+        }
+        else
+        {
+            Shader.SetGlobalFloat("_DangerT", 0);
+        }
     }
 }

@@ -20,14 +20,14 @@ Shader "SilentPanda/Background" {
             uniform half4 _targetColor;
             uniform float _blendAmount;
 
-            float4 frag(v2f_img i) : COLOR {
-                float4 origin = tex2D(_MainTex, i.uv);
+			uniform half2 _playerCenter;
 
-                float4 result = mul(
-                    origin, lerp(_sourceColor, _targetColor, _blendAmount)
-                );
+            float4 frag(v2f_img i) : COLOR
+			{
+				half2 uv = half2(0,0);
+				uv.x = distance(half2(0.5,0.5), i.uv) + _Time.w;
 
-                return result;
+				return half4(i.pos.xy, 0, 0);// tex2D(_MainTex, i.uv);
             }
 
             ENDCG
