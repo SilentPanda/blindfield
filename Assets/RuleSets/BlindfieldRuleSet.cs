@@ -17,9 +17,15 @@ public class BlindfieldRuleSet : MonoBehaviour {
     private float winWait = 0.25f;
     private float winTime = 0.0f;
 	private bool won = false;
+    private bool dead = false;
+
+    public void Dead()
+    {
+        dead = true;
+    }
 
     void Update() {
-		if (!won) {
+		if (!won && !dead) {
 			UpdatePlayers ();
 			CheckWinConditions ();
 		} else {

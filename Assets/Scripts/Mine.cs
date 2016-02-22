@@ -54,6 +54,7 @@ public class Mine : MonoBehaviour
                 AudioSource.PlayClipAtPoint(explosion, Camera.main.transform.position);
                 exploded = true;
                 Conductor.Stop();
+                FindObjectOfType<BlindfieldRuleSet>().Dead();
             }
         }
         else
