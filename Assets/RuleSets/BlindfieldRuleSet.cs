@@ -14,6 +14,8 @@ public class BlindfieldRuleSet : MonoBehaviour {
 
     public AudioClip victory;
 
+    public GameObject deathText;
+
     private float winWait = 0.25f;
     private float winTime = 0.0f;
 	private bool won = false;
@@ -22,6 +24,7 @@ public class BlindfieldRuleSet : MonoBehaviour {
     public void Dead()
     {
         dead = true;
+        deathText.SetActive(true);
     }
 
     void Update() {

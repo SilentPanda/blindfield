@@ -55,6 +55,7 @@ public class Mine : MonoBehaviour
                 exploded = true;
                 Conductor.Stop();
                 FindObjectOfType<BlindfieldRuleSet>().Dead();
+                Destroy(gameObject);
             }
         }
         else
